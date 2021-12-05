@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'Sun Deep';
+    src: url('assets/fonts/SunDeep.ttf');
+}
+
+@font-face {
+    font-family: 'AmsiPro-Black';
+    src: url('assets/fonts/AmsiPro-Black.otf');
+}
+
+@font-face {
+    font-family: 'AmsiPro-Regular';
+    src: url('assets/fonts/AmsiProNarw-Regular.otf');
+}
+
+
+* {
+    color: #fff;
+}
+
+
+.wrapper {
+    position: absolute;
+    right: 0;
+    top: 40%;
+}
+
+.identification {
+    background: url(assets/idcard_custom.png);
+    width: 457px;
+    background-size: 100% 100%;
+    height: 272px;
+    font-family: 'AmsiPro-Black';
+}
+
+
+.idcardFirstname {
+    position: absolute;
+    left: 170px;
+    top: 63px;
+}
+
+.idcardLastname {
+    left: 170px;
+    position: absolute;
+    top: 104px;
+}
+
+.idcardCID {
+    position: absolute;
+    left: 170px;
+    top: 144px;
+}
+
+.idcardCountry {
+    position: absolute;
+    left: 170px;
+    top: 185px;
+}
+
+.idcardBirthdayAndSex {
+    display: flex;
+    position: absolute;
+    left: 170px;
+    top: 222px;
+}
+
+.idcardBirthday {
+    width: 121px;
+}
+
+.idcardImageSignature > img {
+    height: 127px;
+    width: auto;
+}
+
+.idcardImageSignature {
+    position: absolute;
+    top: 55px;
+    left: 27px;
+}
+
+.idcardImageSignature > p {
+    font-family: Sun Deep;
+    font-size: 30px;
+    margin: 0;
+    margin-top: 14px;
+}
+
+.weapon {
+    width: 457px;
+    background-size: 100% 100%;
+    height: 272px;
+    font-family: 'AmsiPro-Black';
+    background: url(assets/firearms_custom.png);
+}
+
+.weaponImageSignature {
+    position: absolute;
+    top: 55px;
+    left: 27px;
+}
+
+img {
+    height: 127px;
+    width: auto;
+}
+
+.weaponFirstname {
+    position: absolute;
+    left: 170px;
+    top: 62px;
+}
+
+.weaponLastname {
+    position: absolute;
+    left: 170px;
+    top: 104px;
+}
+
+.weaponSignature {
+    font-family: 'Sun Deep';
+    position: absolute;
+    left: 170px;
+    top: 150px;
+    font-size: 24px;
+}
+
+.weaponIssuedAt {
+    position: absolute;
+    left: 294px;
+    top: 64px;
+}
+
+.weaponExpiresAt {
+    position: absolute;
+    left: 294px;
+    top: 103px;
+}
+
+.weaponSex {
+    position: absolute;
+    left: 294px;
+    top: 142px;
+}
+
+
+.license {
+    width: 457px;
+    background-size: 100% 100%;
+    height: 272px;
+    font-family: 'AmsiPro-Black';
+    background: url(assets/license_custom.png);
+}
+
+.licenseImageSignature {
+    position: absolute;
+    top: 55px;
+    left: 27px;
+}
+
+.licenseFirstname {
+    position: absolute;
+    left: 170px;
+    top: 62px;
+}
+
+.licenseLastname {
+    position: absolute;
+    left: 170px;
+    top: 104px;
+}
+
+.licenseTypes {
+    position: absolute;
+    left: 170px;
+    top: 144px;
+}
+
+.licenseIssuedAt {
+    position: absolute;
+    left: 294px;
+    top: 64px;
+}
+
+.licenseSex {
+    position: absolute;
+    left: 294px;
+    top: 103px;
+}
+
+.licenseSignature {
+    font-family: 'Sun Deep';
+    position: absolute;
+    left: 170px;
+    top: 190px;
+    font-size: 24px;
+}

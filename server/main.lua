@@ -12,13 +12,13 @@ AddEventHandler('oakyIdentity:server:getIdentity', function(target, type)
     local xTarget = ESX.GetPlayerFromId(target)
     
     if type == 'ident' then
-        MySQL.Async.fetchAll('SELECT firstname, lastname, cid, dateofbirth, sex FROM users WHERE identifier = @identifier', {
+        MySQL.Async.fetchAll('SELECT firstname, lastname, dateofbirth, sex FROM users WHERE identifier = @identifier', {
             ['@identifier'] = xPlayer.getIdentifier()
         }, function(result)
             local userData = {
                 firstname = result[1].firstname,
                 lastname = result[1].lastname,
-                cid = result[1].cid,
+                cid = 'XXXXXXXX',
                 birthday = result[1].dateofbirth,
                 sex = result[1].sex,
             }

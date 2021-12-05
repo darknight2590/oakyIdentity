@@ -10,8 +10,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('quantum_identity:client:sendIdentity')
-AddEventHandler('quantum_identity:client:sendIdentity', function(userData)
+RegisterNetEvent('oakyIdentity:client:sendIdentity')
+AddEventHandler('oakyIdentity:client:sendIdentity', function(userData)
     isIdentOpen = true
     SendNUIMessage({
         action = 'sendIdentity',
@@ -31,8 +31,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('quantum_identity:client:sendWeapon')
-AddEventHandler('quantum_identity:client:sendWeapon', function(data)
+RegisterNetEvent('oakyIdentity:client:sendWeapon')
+AddEventHandler('oakyIdentity:client:sendWeapon', function(data)
     isIdentOpen = true
     SendNUIMessage({
         action = 'sendWeapon',
@@ -40,8 +40,8 @@ AddEventHandler('quantum_identity:client:sendWeapon', function(data)
     })
 end)
 
-RegisterNetEvent('quantum_identity:client:sendLicense')
-AddEventHandler('quantum_identity:client:sendLicense', function(data, licenses)
+RegisterNetEvent('oakyIdentity:client:sendLicense')
+AddEventHandler('oakyIdentity:client:sendLicense', function(data, licenses)
     isIdentOpen = true
     SendNUIMessage({
         action = 'sendLicense',

@@ -4,8 +4,8 @@ TriggerEvent('esx:getSharedObject', function(obj)
     ESX = obj
 end)
 
-RegisterServerEvent('quantum_identity:server:getIdentity')
-AddEventHandler('quantum_identity:server:getIdentity', function(target, type)
+RegisterServerEvent('oakyIdentity:server:getIdentity')
+AddEventHandler('oakyIdentity:server:getIdentity', function(target, type)
     local src = source
     target = tonumber(target)
     local xPlayer = ESX.GetPlayerFromId(src)
@@ -22,10 +22,10 @@ AddEventHandler('quantum_identity:server:getIdentity', function(target, type)
                 birthday = result[1].dateofbirth,
                 sex = result[1].sex,
             }
-            TriggerClientEvent('quantum_identity:client:sendIdentity', xTarget.source, userData)
+            TriggerClientEvent('oakyIdentity:client:sendIdentity', xTarget.source, userData)
         end)
     elseif type == 'weapon' then
-        MySQL.Async.fetchAll('SELECT type, time FROM user_licenses WHERE owner = @owner AND type = "weapon"', {
+        MySQL.Async.fetchAll('SELECT type FROM user_licenses WHERE owner = @owner AND type = "weapon"', {
             ['@owner'] = xPlayer.getIdentifier()
         }, function(result)
             if result[1] ~= nil then
@@ -36,16 +36,16 @@ AddEventHandler('quantum_identity:server:getIdentity', function(target, type)
                     firstname = user[1].firstname,
                     lastname = user[1].lastname,
                     sex = user[1].sex,
-                    time = result[1].time
+                    time = '01.01.'..os.date('%Y')
                 }
-                TriggerClientEvent('quantum_identity:client:sendWeapon', xTarget.source, data)
+                TriggerClientEvent('oakyIdentity:client:sendWeapon', xTarget.source, data)
             else
-                TriggerClientEvent('quantum_notify:client:sendNotification', xTarget.source, 'Identity', 'Du bist nicht im Besitz einer Waffenlizenz.', 'script')
+                xPlayer.showNotification('You do not have a weapon license.')
             end
         end)
     
     elseif type == 'license' then
-        MySQL.Async.fetchAll('SELECT type, time FROM user_licenses WHERE owner = @owner ORDER BY time DESC', {
+        MySQL.Async.fetchAll('SELECT type FROM user_licenses WHERE owner = @owner ORDER BY time DESC', {
             ['@owner'] = xPlayer.getIdentifier()
         }, function(result)
             if result[1] ~= nil then
@@ -62,16 +62,14 @@ AddEventHandler('quantum_identity:server:getIdentity', function(target, type)
                     if result[i].type ~= 'weapon' then
                         table.insert(licenses, {
                             type = result[i].type,
-                            time = result[i].time
+                            time = '01.01.'..os.date('%Y')
                         })
                     end
                 end
-                TriggerClientEvent('quantum_identity:client:sendLicense', xTarget.source, data, licenses)
+                TriggerClientEvent('oakyIdentity:client:sendLicense', xTarget.source, data, licenses)
             else
-                TriggerClientEvent('quantum_notify:client:sendNotification', xTarget.source, 'Identity', 'Du bist nicht im Besitz eines Führerscheins.', 'script')
+                xPlayer.showNotification('You do not have a driver license.')
             end
         end)
-    else
-        TriggerClientEvent('quantum_notify:client:sendNotification', xTarget.source, 'Identity', 'Du hast einen unbekannten Lizenztyp angegeben, dieser existiert nicht', 'script')
     end
 end)
